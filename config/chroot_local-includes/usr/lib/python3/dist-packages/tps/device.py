@@ -57,13 +57,14 @@ class BootDevice(object):
         self.device_path = self.block.props.device
 
     @classmethod
-    def get_tails_boot_device(cls) -> "BootDevice":
+    def get_tails_boot_device(cls,dev_num = 0) -> "BootDevice":
         """Get the device which Tails was booted from"""
-        # Get the underlying block device of the Tails system partition
-        try:
-            dev_num = os.stat(TAILS_MOUNTPOINT).st_dev
-        except FileNotFoundError as e:
-            raise InvalidBootDeviceError(e)
+        if not dev_num:
+            try:
+                # Get the underlying block device of the Tails system partition
+                dev_num = os.stat(TAILS_MOUNTPOINT).st_dev
+            except FileNotFoundError as e:
+                raise InvalidBootDeviceError(e)
 
         block = udisks.get_block_for_dev(dev_num)
         if not block or not block.get_object():
@@ -145,10 +146,10 @@ class Partition(object):
         return bool(cls.find())
 
     @classmethod
-    def find(cls) -> Optional["Partition"]:
+    def find(cls, dev_num = 0) -> Optional["Partition"]:
         """Return the Persistent Storage encrypted partition or raise
         a PartitionNotFoundError."""
-        parent_device = BootDevice.get_tails_boot_device()
+        parent_device = BootDevice.get_tails_boot_device(dev_num)
         partitions = parent_device.partition_table.props.partitions
         for partition_name in sorted(partitions):
             partition = udisks.get_object(partition_name)
@@ -159,9 +160,9 @@ class Partition(object):
         return None
 
     @classmethod
-    def create(cls, job: Job, passphrase: str) -> "Partition":
+    def create(cls, job: Job, passphrase: str, dev_num = 0) -> "Partition":
         """Create the Persistent Storage encrypted partition"""
-        parent_device = BootDevice.get_tails_boot_device()
+        parent_device = BootDevice.get_tails_boot_device(dev_num)
         offset = parent_device.get_beginning_of_free_space()
 
         # Create and format the partition
@@ -190,10 +191,14 @@ class Partition(object):
         # Get the cleartext device
         cleartext_device = partition.get_cleartext_device()
 
-        # Rename the cleartext device to "TailsData_unlocked", so that
-        # is has the same name as after a reboot.
-        cleartext_device.rename_dm_device("TailsData_unlocked")
+        # Skip renaming and mounting if dev_num was specified
+        if dev_num:
+            return partition
 
+        # Rename the cleartext device to "TailsData_unlocked", so that
+        # it has the same name as after a reboot.
+        cleartext_device.rename_dm_device("TailsData_unlocked")
+        
         # Mount the cleartext device
         cleartext_device.mount()
 
