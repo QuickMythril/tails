@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: tails-l10n@boum.org\n"
-"POT-Creation-Date: 2023-01-05 14:41+0000\n"
-"PO-Revision-Date: 2023-01-09 14:17+0000\n"
+"POT-Creation-Date: 2023-01-11 18:02+0000\n"
+"PO-Revision-Date: 2023-01-13 19:17+0000\n"
 "Last-Translator: drebs <drebs@riseup.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -129,6 +129,8 @@ msgid ""
 "You can choose to create a Persistent Storage directly from the Welcome "
 "Screen, if you don't have one already."
 msgstr ""
+"Você pode criar um Armazenamento Persistente diretamente através da Tela de "
+"Boas-vindas, caso você ainda não tenha um."
 
 #. type: Plain text
 #, no-wrap
@@ -242,6 +244,8 @@ msgstr ""
 #. type: Plain text
 msgid "- Remove the *Dasher* graphical text entry application."
 msgstr ""
+"- Remoção do sistema de introdução de texto preditivo *Dasher* da lista de "
+"aplicativos."
 
 #. type: Plain text
 #, no-wrap
@@ -300,31 +304,40 @@ msgstr ""
 #, no-wrap
 msgid "<h2 id=\"qt\">Problems with Qt applications like <i>Kleopatra</i> and <i>Feather</i></h2>\n"
 msgstr ""
+"<h2 id=\"qt\">Problemas em aplicativos Qt como <i>Kleopatra</i> e "
+"<i>Feather</i></h2>\n"
 
 #. type: Plain text
 msgid ""
 "Applications using the Qt toolkit have issues in Wayland. You can work "
 "around these issues by running these applications using XWayland instead."
 msgstr ""
+"Aplicativos que usam bibliotecas Qt apresentam problemas ao serem executados "
+"em Wayland. Você pode solucionar esse problema de forma temporária "
+"executando esses aplicativos usando XWayland."
 
 #. type: Title ###
 #, no-wrap
 msgid "Clipboard encryption and decryption is broken in *Kleopatra* ([[!tails_ticket 19329]])"
 msgstr ""
+"A criptografia e a descriptografia da área de transferência estão com "
+"problemas no *Kleopatra* ([[!tails_ticket 19329]])"
 
 #. type: Plain text
 msgid "To fix this:"
-msgstr ""
+msgstr "Para solucionar isso:"
 
 #. type: Bullet: '1. '
 msgid ""
 "Choose **Applications**&nbsp;▸ **Utilities**&nbsp;▸ **Terminal** to open a "
 "terminal."
 msgstr ""
+"Escolha **Aplicativos**&nbsp;▸ **Utilitários**&nbsp;▸ **Terminal** para "
+"abrir um terminal."
 
 #. type: Bullet: '1. '
 msgid "Execute the following command in the terminal:"
-msgstr ""
+msgstr "Execute o seguinte comando no terminal:"
 
 #. type: Plain text
 #, no-wrap
@@ -337,6 +350,9 @@ msgid ""
 "   This only works if *Kleopatra* has never been started since Tails started.\n"
 "   Otherwise, execute this command and try again:\n"
 msgstr ""
+"   Isso só funciona se o *Kleopatra* ainda não tiver sido aberto desde a "
+"inicialização do Tails.\n"
+"   Caso contrário, execute este comando e tente novamente:\n"
 
 #. type: Plain text
 #, no-wrap
@@ -347,31 +363,37 @@ msgstr ""
 #, no-wrap
 msgid "AppImages like *Feather* wallet and *Bitcoin-Qt* fail to load ([[!tails_ticket 19326]])"
 msgstr ""
+"AppImages como *Feather* e *Bitcoin-Qt* apresentam problemas ao serem "
+"inicializados ([[!tails_ticket 19326]])"
 
 #. type: Bullet: '1. '
 msgid "Navigate to your AppImage in the *Files* browser."
-msgstr ""
+msgstr "Navegue até a sua AppImage no navegador de *Arquivos*."
 
 #. type: Bullet: '1. '
 msgid ""
 "Do right-click (on Mac, click with two fingers) in the folder and choose "
 "**Open in Terminal**."
 msgstr ""
+"Clique com o botão direito (no Mac, clique com dois dedos simultaneamente) "
+"no diretório e escolha **Abrir no Terminal**."
 
 #. type: Bullet: '1. '
 msgid "Execute the following command in the terminal to start your AppImage."
-msgstr ""
+msgstr "Execute o seguinte comando no terminal para iniciar sua AppImage."
 
 #. type: Plain text
 #, no-wrap
 msgid "   Replace:\n"
-msgstr ""
+msgstr "   Substitua:\n"
 
 #. type: Bullet: '   - '
 msgid ""
 "<span class=\"command-placeholder\">application.AppImage</span> by the file "
 "name of your AppImage."
 msgstr ""
+"<span class=\"command-placeholder\">application.AppImage</span> pelo nome do "
+"arquivo da sua AppImage."
 
 #. type: Plain text
 #, no-wrap
@@ -381,7 +403,7 @@ msgstr ""
 #. type: Plain text
 #, no-wrap
 msgid "   For example, to start the *Feather* wallet version 2.1.2, execute:\n"
-msgstr ""
+msgstr "   Por exemplo, para iniciar a carteira *Feather* 2.1.2, execute:\n"
 
 #. type: Plain text
 #, no-wrap
@@ -607,9 +629,9 @@ msgstr ""
 #. type: Plain text
 msgid ""
 "Please try our [experimental images with a newer Linux kernel](https://"
-"nightly.tails.boum.org/build_Tails_ISO_18467-linux-6.0-force-all-tests/"
-"lastSuccessful/archive/build-artifacts/)  and [[tell us|tails-bugs@boum."
-"org]] whether they fix the problem."
+"nightly.tails.boum.org/build_Tails_ISO_stable/lastSuccessful/archive/build-"
+"artifacts/)  and [[tell us|tails-bugs@boum.org]] whether they fix the "
+"problem."
 msgstr ""
 
 #. type: Plain text
@@ -633,6 +655,10 @@ msgid ""
 "[[Dotfiles|doc/first_steps/persistence#dotfiles]] feature of your Persistent "
 "Storage, your Persistent Storage fails to load with the error message:"
 msgstr ""
+"Se você possuir [[!wikipedia Symbolic_link desc=\"links simbólicos\"]] "
+"dentro dos [[Dotfiles|doc/first_steps/persistence#dotfiles]] em seu "
+"Armazenamento Persistente, o Armazenamento Persistente falhará ao carregar e "
+"exibirá a seguinte mensagem de erro:"
 
 #. type: Plain text
 #, no-wrap
@@ -640,6 +666,8 @@ msgid ""
 "    Failed to activate the Persistent Storage.\n"
 "    Please start Tails and send an error report.\n"
 msgstr ""
+"    Falha ao ativar o Armazenamento Persistente.\n"
+"    Por favor, inicie o Tails e envie um relatório de erro.\n"
 
 #. type: Plain text
 msgid "To fix this, remove or replace these symbolic links."
