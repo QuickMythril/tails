@@ -7,11 +7,24 @@ See netnsdrop module for a better understanding of how it works and its assumpti
 import sys
 import os
 import logging
+import sh
 
 from tailslib.netnsdrop import run
 
 
 def main():
+    if os.getuid() == 1000:
+        # Ensure that the xdg-document-portal service has started, because if it
+        # hasn't started *before* the bwrap command is executed, binding
+        # /run/user/1000/doc/by-app/$APP_ID fails.
+        sh.dbus_send(
+            "--session",
+            "--print-reply=literal",
+            "--dest=org.freedesktop.portal.Documents",
+            "/org/freedesktop/portal/documents",
+            "org.freedesktop.portal.Documents.GetMountPoint"
+        )
+
     env = {
         "TOR_BROWSER_SKIP_OFFLINE_WARNING": os.getenv(
             "TOR_BROWSER_SKIP_OFFLINE_WARNING", "no"
@@ -22,7 +35,9 @@ def main():
         "tbb",
         "/usr/local/bin/tor-browser",
         extra_env=env,
-        extra_args=sys.argv[1:]
+        extra_args=sys.argv[1:],
+        app_id="torbrowser.Browser.firefox",
+        flatpak_info="/usr/share/tails/tor-browser/.flatpak-info",
     )
 
 
